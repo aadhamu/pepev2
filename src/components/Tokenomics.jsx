@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { FaCopy, FaCheck, FaTwitter, FaTelegram, FaGlobe } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import PepeLogo from '../assets/pepe.jpg';
+import PepeV20 from '../assets/pepev20.jpg';
+// Import all partner logos from assets
+import CmcLogo from '../assets/cmc.png';
+import CoingeckoLogo from '../assets/coingecko.png';
+import UniswapLogo from '../assets/uniswap.png';
+import EthereumLogo from '../assets/ethereum.png';
+import PinksaleLogo from '../assets/pinksale.png';
+import DextoolsLogo from '../assets/dextools.jpeg';
 
 function Tokenomics() {
   const [copied, setCopied] = useState(false);
@@ -13,13 +21,38 @@ function Tokenomics() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Updated exchanges with local assets
   const exchanges = [
-    { name: "CMC", color: "linear-gradient(135deg, #00ff96, #9d4dff)" },
-    { name: "Pinksale", color: "linear-gradient(135deg, #ff00cc, #ff9900)" },
-    { name: "Coingecko", color: "linear-gradient(135deg, #8a2be2, #1e90ff)" },
-    { name: "DexView", color: "linear-gradient(135deg, #00bfff, #00ff7f)" },
-    { name: "DexTools", color: "linear-gradient(135deg, #ff4500, #ff8c00)" },
-    { name: "Uniswap", color: "linear-gradient(135deg, #ff007f, #9400d3)" }
+    { 
+      name: "CoinMarketCap", 
+      logo: CmcLogo,
+      url: "https://coinmarketcap.com" 
+    },
+    { 
+      name: "Coingecko", 
+      logo: CoingeckoLogo,
+      url: "https://www.coingecko.com" 
+    },
+    { 
+      name: "Uniswap", 
+      logo: UniswapLogo,
+      url: "https://app.uniswap.org" 
+    },
+    { 
+      name: "Ethereum", 
+      logo: EthereumLogo,
+      url: "https://ethereum.org" 
+    },
+    { 
+      name: "Pinksale", 
+      logo: PinksaleLogo,
+      url: "https://www.pinksale.finance" 
+    },
+    { 
+      name: "DexTools", 
+      logo: DextoolsLogo,
+      url: "https://www.dextools.io" 
+    }
   ];
 
   return (
@@ -38,7 +71,7 @@ function Tokenomics() {
         overflow: 'hidden'
       }}
     >
-      {/* Background elements */}
+      {/* Updated background elements to match About page */}
       <div style={{
         position: 'absolute',
         top: 0,
@@ -73,6 +106,69 @@ function Tokenomics() {
         zIndex: 0
       }} />
 
+      {/* Blockchain node connections */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: `
+          linear-gradient(90deg, rgba(0, 255, 150, 0.05) 1px, transparent 1px),
+          linear-gradient(rgba(0, 255, 150, 0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '40px 40px',
+        zIndex: 0
+      }} />
+
+      {/* Floating crypto coins */}
+      <motion.div 
+        initial={{ y: 0 }}
+        animate={{
+          y: [0, -20, 0],
+          transition: {
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+        style={{
+          position: 'absolute',
+          top: '15%',
+          left: '15%',
+          width: '50px',
+          height: '50px',
+          background: 'radial-gradient(circle, #00ff96, #00b36b)',
+          borderRadius: '50%',
+          filter: 'blur(1px)',
+          zIndex: 0
+        }}
+      />
+      
+      <motion.div 
+        initial={{ y: 0 }}
+        animate={{
+          y: [0, -20, 0],
+          transition: {
+            duration: 6,
+            delay: 0.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        }}
+        style={{
+          position: 'absolute',
+          bottom: '25%',
+          right: '15%',
+          width: '70px',
+          height: '70px',
+          background: 'radial-gradient(circle, #9d4dff, #5a00b3)',
+          borderRadius: '50%',
+          filter: 'blur(1px)',
+          zIndex: 0
+        }}
+      />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -97,6 +193,59 @@ function Tokenomics() {
         >
           Tokenomics
         </motion.h2>
+
+        {/* PepeV20 Image positioned below header */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          style={{
+            width: '200px',
+            margin: '0 auto 2rem',
+            position: 'relative',
+            zIndex: 2
+          }}
+        >
+          <motion.div
+            initial={{ y: -10 }}
+            animate={{ y: 10 }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
+            style={{
+              width: '100%',
+              borderRadius: '10px',
+              overflow: 'hidden',
+              border: '2px solid rgba(0, 255, 150, 0.3)',
+              boxShadow: '0 0 20px rgba(0, 255, 150, 0.3)'
+            }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img 
+              src={PepeV20} 
+              alt="Pepe V20 Meme" 
+              style={{ 
+                width: '100%',
+                height: 'auto',
+                display: 'block'
+              }} 
+            />
+            <div style={{
+              width: '100%',
+              background: 'rgba(0, 0, 0, 0.7)',
+              padding: '5px 0',
+              fontSize: '0.8rem',
+              fontWeight: 'bold',
+              color: '#00ff96',
+              textAlign: 'center'
+            }}>
+              PEPE V20 CTO
+            </div>
+          </motion.div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -233,7 +382,7 @@ function Tokenomics() {
           </div>
         </motion.div>
 
-        {/* Exchange Partners */}
+        {/* Exchange Partners with local images */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -257,8 +406,11 @@ function Tokenomics() {
             gap: '1.5rem'
           }}>
             {exchanges.map((exchange, idx) => (
-              <motion.div
+              <motion.a
                 key={idx}
+                href={exchange.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: -5, scale: 1.05 }}
                 style={{
                   background: 'rgba(255, 255, 255, 0.05)',
@@ -277,22 +429,18 @@ function Tokenomics() {
                   color: '#fff'
                 }}
               >
-                <div style={{
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  background: exchange.color,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '0.5rem',
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold'
-                }}>
-                  {exchange.name.charAt(0)}
-                </div>
+                <img 
+                  src={exchange.logo} 
+                  alt={exchange.name} 
+                  style={{
+                    width: '50px',
+                    height: '50px',
+                    objectFit: 'contain',
+                    marginBottom: '0.5rem'
+                  }} 
+                />
                 <span style={{ fontSize: '0.9rem' }}>{exchange.name}</span>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </motion.div>
