@@ -272,7 +272,7 @@ function Tokenomics() {
             }}
             whileHover={{ scale: 1.03 }}
           >
-            69,000,000,000,000
+            1,000,000,000
           </motion.h3>
 
           <div style={{
